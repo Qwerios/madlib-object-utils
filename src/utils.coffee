@@ -43,7 +43,7 @@
 
         return value;
 
-    getAndCreate = ( path, object ) ->
+    getAndCreate = ( path, object, defaultValue ) ->
         if not object? then return
 
         aPath = path.split( "." )
@@ -56,7 +56,12 @@
             if not value[ key ]?
                 value[ key ] = {}
 
-            # Proces the next path element
+            if aPath.length is 0
+                # Assign the default value to the newly created key is supplied
+                #
+                value[ key ] = defaultValue if defaultValue?
+
+            # Process the next path element
             #
             value = value[ key ]
             key   = aPath.shift()
@@ -64,8 +69,8 @@
         return value
 
     setValue = ( path, object, value ) ->
-        targetValue = getAndCreate( path, object )
-        targetValue = value
+        getAndCreate( path, object, value )
+        return object
 
     # Return the module
     #
