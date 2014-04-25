@@ -1,4 +1,6 @@
-# madlib-object-utils [![Build Status](https://travis-ci.org/Qwerios/madlib-object-utils.svg?branch=master)](https://travis-ci.org/Qwerios/madlib-object-utils)
+# madlib-object-utils
+[![Build Status](https://travis-ci.org/Qwerios/madlib-object-utils.svg?branch=master)](https://travis-ci.org/Qwerios/madlib-object-utils)  [![NPM version](https://badge.fury.io/js/madlib-object-utils.png)](http://badge.fury.io/js/grunt-jsdoc) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 A small set of utility functions for working with objects
 
 
