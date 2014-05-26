@@ -23,7 +23,7 @@
     getValue = ( path, object, valueIfMissing = undefined ) ->
         if not object? then return valueIfMissing
 
-        aPath = path.split( "." )
+        aPath = "#{path}".split( "." )
         value = object
         key   = aPath.shift()
 
@@ -46,7 +46,7 @@
     getAndCreate = ( path, object, defaultValue ) ->
         if not object? then return
 
-        aPath = path.split( "." )
+        aPath = "#{path}".split( "." )
         value = object
         key   = aPath.shift()
 

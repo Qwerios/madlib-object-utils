@@ -2,16 +2,6 @@ chai        = require "chai"
 objectUtils = require "../lib/utils.js"
 
 describe( "Object manipulations", () ->
-    describe( "#getValue()", () ->
-        it( "Should get value", () ->
-            testGet =
-                foo:
-                    bar: "yes"
-
-            chai.expect( objectUtils.getValue( "foo.bar", testGet ) ).to.eql( "yes" )
-        )
-    )
-
     describe( "#createValue()", () ->
         it( "Should create the value", () ->
             testCreate = {}
