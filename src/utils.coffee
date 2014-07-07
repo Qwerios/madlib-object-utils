@@ -30,12 +30,12 @@
         if aPath.length is 0
             # This is only a 1 deep check
             #
-            value = value[ key ]
+            value = value[ key.replace( "%2E", "." ) ]
             value = valueIfMissing if not value?
 
         else
             while value and key
-                value = value[ key ]
+                value = value[ key.replace( "%2E", "." ) ]
                 value = valueIfMissing if not value?
                 key   = aPath.shift()
 
@@ -51,6 +51,8 @@
         key   = aPath.shift()
 
         while key
+            key = key.replace( "%2E", "." )
+
             # Create non existing path element
             #
             if not value[ key ]?
