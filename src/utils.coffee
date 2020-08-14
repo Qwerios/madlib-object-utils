@@ -5,6 +5,10 @@
         define( [], factory )
 
 )( () ->
+    isObject = ( value ) ->
+        type = typeof value
+        return value != null and ( type is 'object' or type is 'function' )
+
     isArray = ( object ) ->
         # This is lifted from underscore.js
         # Reason is that it was the only reason to add underscore to some
@@ -27,6 +31,11 @@
         value = object
         key   = aPath.shift()
 
+        if key is 'constructor' and typeof object[key] is 'function'
+            return
+        if key is '__proto__'
+            return
+
         if aPath.length is 0
             # This is only a 1 deep check
             #
@@ -41,14 +50,20 @@
 
             value = if 0 is aPath.length then value else valueIfMissing
 
-        return value;
+        return value
 
     getAndCreate = ( path, object, defaultValue ) ->
         if not object? then return
+        if not isObject( object ) then return
 
         aPath = "#{path}".split( "." )
         value = object
         key   = aPath.shift()
+
+        if key is 'constructor' and typeof object[key] is 'function'
+            return object
+        if key is '__proto__'
+            return object
 
         while key
             key = key.replace( "%2E", "." )
