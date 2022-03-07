@@ -31,11 +31,6 @@
         value = object
         key   = aPath.shift()
 
-        if key is 'constructor' and typeof object[key] is 'function'
-            return
-        if key is '__proto__'
-            return
-
         if aPath.length is 0
             # This is only a 1 deep check
             #
@@ -60,11 +55,6 @@
         value = object
         key   = aPath.shift()
 
-        if key is 'constructor' and typeof object[key] is 'function'
-            return object
-        if key is '__proto__'
-            return object
-
         while key
             key = key.replace( "%2E", "." )
 
@@ -72,6 +62,9 @@
             #
             if not value[ key ]?
                 value[ key ] = {}
+
+            if not value.hasOwnProperty(key)
+                return
 
             if aPath.length is 0
                 # Assign the default value to the newly created key if supplied
